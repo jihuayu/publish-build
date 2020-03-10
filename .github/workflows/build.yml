@@ -11,8 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Upload to Google Drive
-        uses: satackey/action-google-drive@v1
-        with:
+      uses: satackey/action-google-drive@v1
+      with:
           skicka-tokencache-json: ${{ secrets.drive }}
           upload-from: ./
           upload-to: /
