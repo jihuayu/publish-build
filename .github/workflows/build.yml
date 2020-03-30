@@ -1,18 +1,22 @@
-  
-name: Build
+name: push_check
 
 on: [push]
-
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-    - uses: actions/checkout@v2
-    - name: Upload to Google Drive
-      uses: satackey/action-google-drive@v1
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
-          skicka-tokencache-json: ${{ secrets.drive }}
-          upload-from: ./
-          upload-to: /
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm install
+        node src/index.js
+    - name: upload
+      run: | 
+        ./OneDriveUploader.exe -s ./mods  -r / -t 8
