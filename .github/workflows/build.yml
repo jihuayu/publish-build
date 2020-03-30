@@ -16,7 +16,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        node src/index.js
+        node index.js
     - name: upload
       run: | 
         ./OneDriveUploader.exe -s ./mods  -r / -t 8
