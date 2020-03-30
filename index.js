@@ -37,7 +37,7 @@ axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
 axios.defaults.timeout =  20*1000;
 
 f = async () => {
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 100; i++) {
         console.log(i);
         let res = await axios.get(twitchBase + `api/v2/addon/search?gameId=432&index=${100 * i}&pageSize=100&sort=1&sectionId=6`);
         for (let i of res.data){
