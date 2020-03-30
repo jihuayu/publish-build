@@ -19,4 +19,4 @@ jobs:
         node index.js
     - name: upload
       run: | 
-        ./OneDriveUploader.exe -s ./mods  -r / -t 8
+        ./OneDriveUploader.exe -s ./mods  -r / -t 15 -skip
